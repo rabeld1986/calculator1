@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type=text/css href="style.css"> 
+<title>rabel's site</title>
+</head>
+<body>
+	<h1> welcome</h1>
+	<script type="text/javascript">
+	var a;
+	var b;
+	var c;
+	
+	document.write("Home");
+	//this is how you separate sentences
+	document.write("<br />")
+	document.write("<br />")
+	document.write(" input two numbers, the we will add them: ");
+	//function that creates pop-out alerts
+	function getSum() {
+
+		a = document.getElementById("nn1").value
+		b = document.getElementById("nn2").value
+		c= Number(a)+Number(b)
+		alert(c)
+		
+		
+	}
+	function Cal(val){	
+		var x = document.getElementById("result")
+		x.value += val 
+	}
+	function Op(){
+		var xy = document.getElementById("result")
+		var lChar
+		var prevChar
+		lChar = xy.value.length - 1
+		prevChar = xy.value.length - 2
+		
+		if (xy.value[lChar] === xy.value[prevChar]){
+				xy.value = xy.value.slice(0,-1)
+			}
+		if ((xy.value[lChar] === "/" ) && (xy.value[prevChar] === "+")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "*" ) && (xy.value[prevChar] === "+")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "." ) && (xy.value[prevChar] === "+")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "/" ) && (xy.value[prevChar] === "-")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "*" ) && (xy.value[prevChar] === "-")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "." ) && (xy.value[prevChar] === "-")){
+			xy.value = xy.value.slice(0,-1)
+		}		
+		if ((xy.value[lChar] === "/" || "*" || "+" || "-" ) && (xy.value[prevChar] === ".")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "/" ) && (xy.value[prevChar] === "*")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "." ) && (xy.value[prevChar] === "*")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "*" ) && (xy.value[prevChar] === "/")){
+			xy.value = xy.value.slice(0,-1)
+		}
+		if ((xy.value[lChar] === "." ) && (xy.value[prevChar] === "/")){
+				xy.value = xy.value.slice(0,-1)	
+		}		
+	
+	}
+	function result(){
+		var y = document.getElementById("result").value
+		var res
+		res = eval(y)
+		document.getElementById("result").value = res
+		if (res == "Infinity"){
+			document.getElementById("result").value = "Error"
+		}
+	}
+	function Clr(){
+		document.getElementById("result").value = ""
+		document.getElementById("result")[0].placeholder = "0"
+	}
+	</script>
+</head>
+<body>
+	<br />
+	<input id = "nn1" type ="number" placeholder = "enter 1st number"/>
+	<input id = "nn2" type ="number" placeholder = "enter 2nd number"/>
+	<input type = "button" onclick = "getSum()"  value = "add numbers"/>
+	<br />
+	<br>
+	if you prefer we also have a calculator
+	<br />
+	<h2> Calculator</h2>
+	<input id = "result"  type ="text"  placeholder = "0" maxlength="9" />
+	<br>
+	<input id = "clear" type = "button" onclick = "Clr()" value = " C "/>
+	<br>
+	<input id = "n7" type = "button" onclick = "Cal(n7.value)" value = "7" />
+	<input id = "n8" type = "button" onclick = "Cal('8')" value = "8"/>
+	<input id="n9" type="button" onclick="Cal('9')" value="9">
+	<input id = "div" type = "button"  onclick="Cal('/'); Op()" value = "/"/>
+	<br>
+	<input id = "n4" type = "button" onclick = "Cal('4')" value = "4"/>
+	<input id = "n5" type = "button" onclick = "Cal('5')" value = "5"/>
+	<input id = "n6" type = "button" onclick = "Cal('6')" value = "6"/>
+	<input id = "mul" type = "button" onclick="Cal('*'); Op()" value = "x"/>
+	<br>
+	<input id = "n1" type = "button" onclick = "Cal('1')"  value = 1>
+	<input id = "n2" type = "button" onclick = "Cal('2')" value = "2"/>
+	<input id = "n3" type = "button" onclick = "Cal('3')" value = "3"/>
+	<input id = "sub" type = "button"  onclick="Cal('-'); Op()" value = "-"/>
+	<br>
+	<input id = "n0" type = "button" onclick = "Cal('0')" value = "  0  "/>
+	<input id = "decimal" type = "button" onclick = "Cal('.'); Op()" value = "."/>
+	<input id = "plus" type = "button"  onclick="Cal('+'); Op()" value = "+"/>
+	<input id = "equal" type = "button"  onclick="result()" value = "="/>
+	<br>
+</body>
+</html>
